@@ -17,6 +17,7 @@ class CountryInfoViewModel {
     weak var delegate: ServiceCallbackDelegate?
     
     var updateTitle: (() -> Void)?
+    var refreshData: (() -> Void)?
 
     init(delegate: ServiceCallbackDelegate) {
         self.delegate = delegate
@@ -30,7 +31,6 @@ class CountryInfoViewModel {
             }
         }
     }
-
 }
 
 //MARK : - Web service request
@@ -38,6 +38,8 @@ extension CountryInfoViewModel {
     func fetchAPI() {
         ServiceManager().getCountryInfoData(url: Url.baseUrl) { [weak self] (result) in
             guard let self = self else { return }
+            self.refreshData?()
+
             switch result {
             case .failure(let error):
                 self.delegate?.onFailureResponse(with: error)

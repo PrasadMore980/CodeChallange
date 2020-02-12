@@ -11,6 +11,7 @@ import UIKit
 class CountryInfoViewController: UIViewController {
     private var countryInfo: CountryInfo!
     private var viewModel: CountryInfoViewModel!
+    private var refreshControl: UIRefreshControl!
 
     //Creating tableView
     private lazy var tableView : UITableView = {
@@ -18,26 +19,37 @@ class CountryInfoViewController: UIViewController {
         tableView.estimatedRowHeight = Height.infoTableCellEstimated
         tableView.rowHeight = UITableView.automaticDimension
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: .zero)
+
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        setupRrefreshControls()
         setupTableView()
 
-//        self.title = "Country info"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         viewModel = CountryInfoViewModel(delegate: self)
         viewModel.fetchAPI()
+        
+        //Title Update from received response
         viewModel.updateTitle = { [weak self] () in
             guard let self = self else { return }
             self.title = self.viewModel.countryInfoTitle
         }
+        
+        // refreshControl endRefreshing
+        viewModel.refreshData = { [weak self] () in
+            guard let self = self, let refreshControl = self.refreshControl else { return }
+            DispatchQueue.main.async {
+                refreshControl.endRefreshing()
+            }
+        }
+
     }
 }
 
@@ -46,13 +58,26 @@ extension CountryInfoViewController {
     func setupTableView() {
         tableView.register(CountryInfoTableViewCell.self, forCellReuseIdentifier: "CountryInfoTableViewCell")
         view.addSubview(tableView)
-        
+        tableView.dataSource = self
+        tableView.refreshControl = refreshControl
+
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
+    }
+    private func setupRrefreshControls() {
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .black
+        refreshControl.backgroundColor = UIColor.lightGray
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading Data Please Wait!!")
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    @objc func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.fetchAPI()
     }
 }
 
