@@ -28,12 +28,16 @@ class CountryInfoViewController: UIViewController {
         
         setupTableView()
 
-        self.title = "Country info"
+//        self.title = "Country info"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         viewModel = CountryInfoViewModel(delegate: self)
         viewModel.fetchAPI()
+        viewModel.updateTitle = { [weak self] () in
+            guard let self = self else { return }
+            self.title = self.viewModel.countryInfoTitle
+        }
     }
 }
 

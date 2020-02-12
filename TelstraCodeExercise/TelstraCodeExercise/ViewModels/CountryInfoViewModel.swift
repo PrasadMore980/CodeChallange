@@ -15,10 +15,21 @@ protocol ServiceCallbackDelegate: class {
 
 class CountryInfoViewModel {
     weak var delegate: ServiceCallbackDelegate?
+    
+    var updateTitle: (() -> Void)?
+
     init(delegate: ServiceCallbackDelegate) {
         self.delegate = delegate
     }
-    var countryInfoTitle: String?
+    
+    
+    var countryInfoTitle: String?{
+        didSet {
+            DispatchQueue.main.async {
+                self.updateTitle?()
+            }
+        }
+    }
 
 }
 
