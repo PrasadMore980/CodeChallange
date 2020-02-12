@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class CountryInfoTableViewCell: UITableViewCell {
 
@@ -61,7 +63,7 @@ class CountryInfoTableViewCell: UITableViewCell {
             }
             self.titleText = rowElement.title
             self.descriptionText = rowElement.description
-            self.cellImage.image = UIImage.init(named: "placeholder")
+            self.cellImage.sd_setImage(with: URL(string: rowElement.imageUrl ?? ""), placeholderImage: UIImage(named: "placeholder"))
         }
     }
     override func awakeFromNib() {
