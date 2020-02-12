@@ -13,10 +13,21 @@ import UIKit
 enum Url {
     static let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
 }
-
+//TableView cell heights
 enum Height {
     static let infoTableCellEstimated: CGFloat = 100
     static let infoTableCellMinimum: CGFloat = 100
+}
+
+enum ImageSize {
+    static let width = 70.0
+    static let height = 70.0
+}
+enum Paddings {
+    
+    static let LeadTop: CGFloat = 10
+    static let TrailBottom: CGFloat = -20
+
 }
 
 //MARK:- Response: Success or Failure
