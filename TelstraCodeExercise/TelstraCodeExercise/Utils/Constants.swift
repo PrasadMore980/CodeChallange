@@ -24,10 +24,14 @@ enum ImageSize {
     static let height = 70.0
 }
 enum Paddings {
-    
     static let LeadTop: CGFloat = 10
     static let TrailBottom: CGFloat = -20
+}
 
+//MARK:- NetworkError Messages
+enum NetworkErrors: Error {
+    static let network = "No Internet connection."
+    static let fetch = "An error occurred while fetching data."
 }
 
 //MARK:- Response: Success or Failure

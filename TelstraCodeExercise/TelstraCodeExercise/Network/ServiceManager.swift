@@ -23,6 +23,11 @@ class ServiceManager {
 
     // MARK: getCountryData web service call
     func getCountryInfoData(url: String, onCompletion: @escaping (Result<CountryInfo>) -> Void) {
+        if !Reachability.isConnectedToNetwork() {
+           onCompletion(Result.failure(NetworkErrors.network))
+            return
+        }
+
         guard let url = URL(string: url) else { return }
         let dataTask = session.downloadTask(with: url) { localURL, urlResponse, error in
             
@@ -31,10 +36,9 @@ class ServiceManager {
                 do {
                     // To make sure this JSON is in the format we expect
                     let str = String(decoding: someData, as: UTF8.self)
-                    print(str)
                     let data: Data? = str.data(using: .utf8)
                     guard let decodedResponse = try? JSONDecoder().decode(CountryInfo.self, from: data!) else {
-                        onCompletion(Result.failure("Please check your network conectivity"))
+                        onCompletion(Result.failure(NetworkErrors.fetch))
                         return
                     }
                     let deFile = FileManager.default

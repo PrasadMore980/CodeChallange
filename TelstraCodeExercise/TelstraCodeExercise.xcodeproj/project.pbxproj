@@ -18,6 +18,8 @@
 		C0C42F3D23F4166D008CD6FF /* CountryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C42F3C23F4166D008CD6FF /* CountryInfo.swift */; };
 		C0C42F4023F418BF008CD6FF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C42F3F23F418BF008CD6FF /* ServiceManager.swift */; };
 		C0C42F4323F4319F008CD6FF /* CountryInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C42F4223F4319F008CD6FF /* CountryInfoViewModel.swift */; };
+		C0C42F4523F465FB008CD6FF /* CellIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C42F4423F465FB008CD6FF /* CellIdentifier.swift */; };
+		C0C42F4723F47496008CD6FF /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C42F4623F47496008CD6FF /* Reachability.swift */; };
 		E16429EE11B4419CF9DE7BB1 /* Pods_TelstraCodeExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400C406ED2CAB7E3EEA6F911 /* Pods_TelstraCodeExercise.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		C0C42F3C23F4166D008CD6FF /* CountryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfo.swift; sourceTree = "<group>"; };
 		C0C42F3F23F418BF008CD6FF /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		C0C42F4223F4319F008CD6FF /* CountryInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewModel.swift; sourceTree = "<group>"; };
+		C0C42F4423F465FB008CD6FF /* CellIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifier.swift; sourceTree = "<group>"; };
+		C0C42F4623F47496008CD6FF /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		E49F2F4FB137B70AB7DA52E4 /* Pods-TelstraCodeExerciseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TelstraCodeExerciseTests.release.xcconfig"; path = "Target Support Files/Pods-TelstraCodeExerciseTests/Pods-TelstraCodeExerciseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +168,7 @@
 		C0C42F3E23F41899008CD6FF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C0C42F4623F47496008CD6FF /* Reachability.swift */,
 				C0C42F3F23F418BF008CD6FF /* ServiceManager.swift */,
 			);
 			path = Network;
@@ -173,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C42F4223F4319F008CD6FF /* CountryInfoViewModel.swift */,
+				C0C42F4423F465FB008CD6FF /* CellIdentifier.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,7 +191,6 @@
 				B38FAE3CA2B963D8D0C3FC84 /* Pods-TelstraCodeExerciseTests.debug.xcconfig */,
 				E49F2F4FB137B70AB7DA52E4 /* Pods-TelstraCodeExerciseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -363,8 +368,10 @@
 			files = (
 				C0C42F3B23F40B1E008CD6FF /* CountryInfoTableViewCell.swift in Sources */,
 				C0C42F1623F3F810008CD6FF /* CountryInfoViewController.swift in Sources */,
+				C0C42F4523F465FB008CD6FF /* CellIdentifier.swift in Sources */,
 				C0C42F3823F408EE008CD6FF /* Constants.swift in Sources */,
 				C0C42F4023F418BF008CD6FF /* ServiceManager.swift in Sources */,
+				C0C42F4723F47496008CD6FF /* Reachability.swift in Sources */,
 				C0C42F3D23F4166D008CD6FF /* CountryInfo.swift in Sources */,
 				C0C42F4323F4319F008CD6FF /* CountryInfoViewModel.swift in Sources */,
 				C0C42F1423F3F810008CD6FF /* AppDelegate.swift in Sources */,

@@ -56,7 +56,7 @@ class CountryInfoViewController: UIViewController {
 //MARK:-  UI Setup
 extension CountryInfoViewController {
     func setupTableView() {
-        tableView.register(CountryInfoTableViewCell.self, forCellReuseIdentifier: "CountryInfoTableViewCell")
+        tableView.register(CountryInfoTableViewCell.self, forCellReuseIdentifier: CountryInfoTableViewCell.identifier)
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
@@ -103,7 +103,7 @@ extension CountryInfoViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryInfoTableViewCell") as? CountryInfoTableViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryInfoTableViewCell.identifier) as? CountryInfoTableViewCell else{
             fatalError("")
         }
         let currentItem = countryInfo.rows![indexPath.row]
